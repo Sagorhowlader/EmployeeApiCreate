@@ -14,7 +14,7 @@ def api(request):
         'Detail View': '/employee/<str:pk>/',
         'Create': '/create-employee/',
         'Update': '/update-employee/<str:pk>/',
-        'Delete': '/S/<str:pk>/',
+        'Delete': '/delete-employee/<str:pk>/',
     }
     return Response(api_urls)
 
@@ -29,7 +29,7 @@ def employeelist(request):
 @api_view(['POST'])
 def employee(request, pk):
     print(request)
-    view = emp_info.objects.get(id=pk)
+    view = emp_info.objects.filter(id=pk)
     serializer = emp_infoSerializers(view, many=True)
     return Response(serializer.data)
 
@@ -44,7 +44,7 @@ def create_employee(request):
 
 @api_view(['POST'])
 def update_employee(request, pk):
-    delete = emp_info.objects.get(id=pk)
+    delete = emp_info.objects.filter(id=pk)
     serializer = emp_infoSerializers(instance=delete, data=request.data)
     if serializer.is_valid():
         serializer.save()
@@ -53,6 +53,6 @@ def update_employee(request, pk):
 
 @api_view(['DELETE'])
 def delete_employee(request, pk):
-    task = emp_info.objects.get(id=pk)
+    task = emp_info.objects.filter(id=pk)
     task.delete()
     return Response("Task Deleted Successfully")
