@@ -19,16 +19,16 @@ def api(request):
     return Response(api_urls)
 
 
-@api_view(['GET'])
-def employeelist(request):
-    list = emp_info.objects.all()
-    serializer = emp_infoSerializers(list, many=True)
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def employeelist(request):
+#     list = emp_info.objects.all()
+#     serializer = emp_infoSerializers(list, many=True)
+#     return Response(serializer.data)
 
 
 @api_view(['POST'])
 def employee(request, pk):
-    print(request)
+
     view = emp_info.objects.filter(id=pk)
     serializer = emp_infoSerializers(view, many=True)
     return Response(serializer.data)

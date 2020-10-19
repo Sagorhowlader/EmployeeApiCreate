@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="F:\Sagor\RestApi\Rest_Api"
+VIRTUAL_ENV="D:\Sagor\EmployeeApiCreate\Rest_Api"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
